@@ -1,5 +1,4 @@
-# HyperAlign
-Hypergraph-Regularized Gramian Volumes for Multimodal Retrieval
+# HyVoL: Hypergraph-Regularized Gramian Volumes for Multimodal Retrieval
 
 Code release for **HyVoL**, a **training-time** hypergraph regularizer for
 volume-based multimodal alignment.
@@ -71,6 +70,7 @@ placeholder) so the code finds your local data and weights:
 export DATA_ROOT=/your/datasets       # benchmark clips + annotations
 export WORK_ROOT=/your/workdir        # pretrained_weights/, output checkpoints
 ```
+
 ## 5. Training (continued pretraining with the hypergraph regularizer)
 
 ```bash
@@ -103,10 +103,7 @@ for cfg in benchmark_eval/configs/zs_*.json; do
       benchmark_eval/run_eval.py --config "$cfg" --output_dir out/$(basename "$cfg" .json)
 done
 ```
-Reported metric: two-stage `volume_ITM_T2D` / `volume_ITM_D2T` (R@1/R@5/R@10),
-computed **without** dual-softmax reranking — all numbers in the paper use no DSL.
-A dual-softmax helper (`DSL_TEMP`) exists in `utils/` as an optional switch but is
-disabled by default and is not used for any reported result.
+Reported metric: two-stage `volume_ITM_T2D` / `volume_ITM_D2T` (R@1/R@5/R@10).
 
 **Missing-modality robustness** is controlled by environment variables (the
 observed-modality volume is recovered with the identity-padded Gramian in
@@ -141,3 +138,4 @@ GRAM_HYVOL/ , HyperGRAM_HYVOL/
   data/           dataset / dataloader code
   run.py          training / eval entry point
 ```
+
