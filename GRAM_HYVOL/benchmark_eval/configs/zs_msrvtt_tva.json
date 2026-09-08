@@ -1,0 +1,56 @@
+{
+ "run_cfg": {
+  "default": "/PATH/TO/HyperAlign/config/gram/default_run_cfg.json",
+  "mode": "testing",
+  "checkpoint": "/PATH/TO/HyperAlign/workdir_topk_ablation/k12/ckpt/best_ret%tvas--msrvtt_ret_ret_area_forward.pt"
+ },
+ "model_cfg": {
+  "default": "/PATH/TO/HyperAlign/config/gram/default_model_cfg.json",
+  "vision_encoder_type": "evaclip01_giant",
+  "stage": "B",
+  "w_doc": 1.0,
+  "w_xdoc": 0.5,
+  "w_reg": 0.1,
+  "semantic_edges": true,
+  "knn_k": 12,
+  "edge_dropout": 0.3,
+  "hgnn_layers": 2,
+  "ret_bidirection_evaluation": true
+ },
+ "data_cfg": {
+  "train": [
+   {
+    "type": "annoindexed",
+    "training": false,
+    "name": "msrvtt_ret",
+    "txt": "datasets/annotations/msrvtt/descs_ret_test.json",
+    "vision_transforms": "crop_flip",
+    "vision_format": "video_rawvideo",
+    "vision": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/MSRVTT_full/MSRVTT/videos/all",
+    "audio": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/MSRVTT_full/audios",
+    "vision_sample_num": 8,
+    "audio_sample_num": 1,
+    "task": "ret%tva",
+    "n_workers": 8,
+    "batch_size": 32
+   }
+  ],
+  "val": [
+   {
+    "type": "annoindexed",
+    "training": false,
+    "name": "msrvtt_ret",
+    "txt": "datasets/annotations/msrvtt/descs_ret_test.json",
+    "vision_transforms": "crop_flip",
+    "vision_format": "video_rawvideo",
+    "vision": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/MSRVTT_full/MSRVTT/videos/all",
+    "audio": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/MSRVTT_full/audios",
+    "vision_sample_num": 8,
+    "audio_sample_num": 1,
+    "task": "ret%tva",
+    "n_workers": 8,
+    "batch_size": 32
+   }
+  ]
+ }
+}

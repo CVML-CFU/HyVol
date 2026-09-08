@@ -1,0 +1,1 @@
+/PATH/TO/HyperAlign/workdir_topk_ablation/k12/ckpt/best_ret%tvas--msrvtt_ret_ret_area_forward.pt
