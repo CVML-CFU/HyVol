@@ -1,0 +1,58 @@
+{
+  "run_cfg": {
+    "default": "./configs/default_run_cfg.json",
+    "output_dir": "output2/hybrid_msrvtt_pre",
+    "learning_rate": 2e-05,
+    "train_epoch": 4,
+    "checkpointing": true,
+    "save_steps": 500,
+    "log_steps": 50,
+    "first_eval": true,
+    "save_best": true,
+    "fp16": true,
+    "valid_freq": 40,
+    "pretrain_dir": "pretrained_models/GRAM_finetuned_MSRVTT"
+  },
+
+  "model_cfg": {
+    "default": "./configs/default_model_cfg.json",
+    "geometry_mode": "hybrid",
+    "learn_curvature": true,
+    "learn_hybrid_weights": true,
+    "gradient_clip_hyperbolic": 1.0,
+    "max_subtitle_len": 70
+  },
+
+  "data_cfg": {
+    "train": [{
+      "type": "annoindexed",
+      "training": true,
+      "name": "msrvtt_ret",
+      "txt": "datasets/annotations/msrvtt/descs_ret_train.json",
+      "vision": "datasets/msrvtt/TrainValVideo",
+      "audio": "datasets/msrvtt/audios",
+      "vision_format": "video_rawvideo",
+      "vision_sample_num": 8,
+      "audio_sample_num": 1,
+      "task": "ret%tva%tv%ta",
+      "epoch": 4,
+      "n_workers": 8,
+      "batch_size": 32
+    }],
+
+    "val": [{
+      "type": "annoindexed",
+      "training": false,
+      "name": "msrvtt_ret",
+      "txt": "datasets/annotations/msrvtt/descs_ret_test.json",
+      "vision": "datasets/msrvtt/TestVideo",
+      "audio": "datasets/msrvtt/test_audios",
+      "vision_format": "video_rawvideo",
+      "vision_sample_num": 8,
+      "audio_sample_num": 1,
+      "task": "ret%tvas",
+      "n_workers": 8,
+      "batch_size": 64
+    }]
+  }
+}
