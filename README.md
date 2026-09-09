@@ -122,12 +122,13 @@ python -m torch.distributed.launch --nproc_per_node 4 \
 
 ## 7. Config → paper mapping
 
-| Config | Reproduces |
+| Config / setting | Paper |
 | --- | --- |
-| `zs_{msrvtt_tvas, vatex_tva, vatex_tvas, didemo_tva, activitynet_tva, audiocaps_tva}` | main retrieval tables |
-| `zs_vggsound_tav` | audio–visual classification |
-| `workdir_ablation_k12` (HyperGRAM) / `workdir_topk_ablation` (GRAM) | neighbourhood-size $k$ ablation |
-| `MISS_RATE`/`MISS_MODS` sweep | missing-modality tables |
+| `zs_msrvtt_{tv,tva,tvas}` | Table 1 (MSR-VTT retrieval) |
+| `zs_didemo_{tv,tva}`, `zs_activitynet_{tv,tva}`, `zs_vatex_{tv,tva,tvas}` | Table 2 (DiDeMo / ActivityNet / VATEX) |
+| `zs_audiocaps_tva`, `zs_vggsound_tav` | Table 3 (AudioCaps retrieval; VGGSound-5K classification) |
+| `MISS_RATE`/`MISS_MODS` sweep (on GRAM) | Table 4 (missing modality; MSR-VTT/VATEX T–VAS, DiDeMo/ActivityNet T–VA) |
+| `workdir_topk_ablation/k{4,8,12,16}` (GRAM) | Figure 2 (semantic-neighbourhood size $k$) |
 
 ## 8. Layout
 
