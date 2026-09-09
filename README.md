@@ -31,15 +31,18 @@ Multi-GPU launch uses `torch.distributed`; commands below assume 4 GPUs.
 
 ## 2. Model weights (frozen encoders + init)
 
-HyVoL keeps the backbone's frozen encoders and continues pretraining from the
-public VAST foundation checkpoint. Download each into `${WORK_ROOT}/pretrained_weights/`:
+HyVoL builds on the **GRAM** backbone (`github.com/ispamm/GRAM`) and follows its
+frozen-encoder and initialisation setup: three frozen encoders and one
+initialisation checkpoint, with continued pretraining starting from the public
+VAST foundation model. Download each into `${WORK_ROOT}/pretrained_weights/` —
+none is redistributed here.
 
-- **EVA-CLIP** vision encoder (`EVA01_CLIP_g_14`)
-- **BEATs** audio encoder (`BEATs_iter3_plus_AS2M`)
-- **BERT** text encoder (`bert-base-uncased`)
-- **VAST** foundation checkpoint (`pretrain_vast/ckpt/model_step_*.pt`) as initialization
-
-None of these weights are redistributed here.
+| Component | File | Source |
+| --- | --- | --- |
+| Vision — EVA-CLIP ViT-g/14 | `EVA01_CLIP_g_14_psz14_s11B.pt` | `huggingface.co/QuanSun/EVA-CLIP` |
+| Audio — BEATs | `BEATs_iter3_plus_AS2M.pt` | `github.com/microsoft/unilm` (`beats/`) |
+| Text — BERT-base | `bert-base-uncased` | `huggingface.co/google-bert/bert-base-uncased` |
+| Initialisation — VAST foundation | `pretrain_vast/ckpt/model_step_*.pt` | `github.com/ispamm/GRAM` (GRAM / VAST setup) |
 
 ## 3. Data
 
