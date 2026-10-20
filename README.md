@@ -12,8 +12,8 @@ We release HyVoL on two volume backbones:
 
 | Folder | Backbone | Volume |
 | --- | --- | --- |
-| `GRAM_HYVOL/` | GRAM | Euclidean Gramian |
-| `HyperGRAM_HYVOL/` | HyperGRAM | hyperbolic / hybrid Gramian |
+| `HyVol_GRAM/` | GRAM | Euclidean Gramian |
+| `HyVol_HyperGRAM/` | HyperGRAM | hyperbolic / hybrid Gramian |
 
 The two folders share the same layout and interface; pick the backbone you want.
 
