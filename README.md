@@ -77,7 +77,7 @@ export WORK_ROOT=/your/workdir        # pretrained_weights/, output checkpoints
 ## 5. Training (continued pretraining with the hypergraph regularizer)
 
 ```bash
-cd GRAM_HYVOL        # or HyperGRAM_HYVOL
+cd HyVol_GRAM        # or HyVol_HyperGRAM
 python -m torch.distributed.launch --nproc_per_node 4 run.py \
     --config config/<train_config>.json
 ```
@@ -102,13 +102,13 @@ Pretrained HyVoL checkpoints are available on Hugging Face:
 
 | Folder | Checkpoint |
 | --- | --- |
-| `GRAM_HYVOL/` | `GRAM_HYVOL/HyVol_GRAM.pt` |
-| `HyperGRAM_HYVOL/` | `HyperGRAM_HYVOL/HyVol_HyperGRAM.pt` |
+| `HyVol_GRAM/` | `GRAM_HYVOL/HyVol_GRAM.pt` |
+| `HyVol_HyperGRAM/` | `HyperGRAM_HYVOL/HyVol_HyperGRAM.pt` |
 
 Set `GRAM_CKPT` below to the downloaded file to evaluate without training.
 
 ```bash
-cd GRAM_HYVOL        # or HyperGRAM_HYVOL
+cd HyVol_GRAM        # or HyVol_HyperGRAM
 export GRAM_CKPT=${WORK_ROOT}/ckpt/<checkpoint>.pt
 python benchmark_eval/make_configs.py          # bakes the checkpoint into configs/zs_*.json
 for cfg in benchmark_eval/configs/zs_*.json; do
@@ -143,7 +143,7 @@ python -m torch.distributed.launch --nproc_per_node 4 \
 ## 8. Layout
 
 ```
-GRAM_HYVOL/ , HyperGRAM_HYVOL/
+HyVol_GRAM/ , HyVol_HyperGRAM/
   model/          backbone forward + hypergraph refinement (stage B)
   utils/          Gramian volume (+ masked, missing-modality) and helpers
   evaluation/     retrieval (evaluation_mm.py) and classification eval
@@ -152,6 +152,7 @@ GRAM_HYVOL/ , HyperGRAM_HYVOL/
   data/           dataset / dataloader code
   run.py          training / eval entry point
 ```
+
 ## 9. Citation
 
 If you use this code or the pretrained weights, please cite
@@ -164,3 +165,4 @@ If you use this code or the pretrained weights, please cite
   booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
   year      = {2027}
 }
+```
