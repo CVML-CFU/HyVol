@@ -1,0 +1,62 @@
+{
+ "run_cfg": {
+  "default": "/PATH/TO/HyperbolicHyperAlign/code/config/gram/default_run_cfg.json",
+  "mode": "testing",
+  "checkpoint": "/PATH/TO/HyperbolicHyperAlign/code/workdir_pretrain/ckpt/best_ret%tvas--msrvtt_ret_ret_itm_area.pt"
+ },
+ "model_cfg": {
+  "default": "/PATH/TO/HyperbolicHyperAlign/code/config/gram/default_model_cfg.json",
+  "vision_encoder_type": "evaclip01_giant",
+  "stage": "B",
+  "w_doc": 1.0,
+  "w_xdoc": 0.5,
+  "w_reg": 0.1,
+  "semantic_edges": true,
+  "knn_k": 8,
+  "edge_dropout": 0.3,
+  "hgnn_layers": 2,
+  "geometry_mode": "hybrid",
+  "curvature_init": 1.0,
+  "learn_curvature": true,
+  "initial_euclidean_weight": 0.5,
+  "initial_hyperbolic_weight": 0.5,
+  "learn_hybrid_weights": true,
+  "gradient_clip_hyperbolic": 1.0,
+  "ret_bidirection_evaluation": true,
+  "max_caption_len": 70
+ },
+ "data_cfg": {
+  "train": [
+   {
+    "type": "annoindexed",
+    "training": false,
+    "name": "activitynet_ret",
+    "txt": "datasets/annotations/activitynet/descs_ret_test.json",
+    "vision": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/ActivityNet/videos/Activity_Videos",
+    "audio": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/ActivityNet/audios",
+    "vision_format": "video_rawvideo",
+    "vision_sample_num": 8,
+    "audio_sample_num": 2,
+    "task": "ret%tv",
+    "n_workers": 8,
+    "batch_size": 32
+   }
+  ],
+  "val": [
+   {
+    "type": "annoindexed",
+    "training": false,
+    "name": "activitynet_ret",
+    "txt": "datasets/annotations/activitynet/descs_ret_test.json",
+    "vision": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/ActivityNet/videos/Activity_Videos",
+    "audio": "/PATH/TO/data/Multimodal_HyperGraph_Dataset/ActivityNet/audios",
+    "vision_format": "video_rawvideo",
+    "vision_sample_num": 8,
+    "audio_sample_num": 2,
+    "task": "ret%tv",
+    "n_workers": 8,
+    "batch_size": 32
+   }
+  ]
+ }
+}

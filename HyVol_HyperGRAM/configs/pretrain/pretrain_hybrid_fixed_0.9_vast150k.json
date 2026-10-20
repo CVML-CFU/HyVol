@@ -1,0 +1,64 @@
+{
+  "run_cfg": {
+    "default": "./configs/default_run_cfg.json",
+    "output_dir": "output2/hybrid_fixed_0.9_vast150k",
+    "learning_rate": 5e-5,
+    "train_epoch": 0.5,
+    "checkpointing": true,
+    "save_steps": 2000,
+    "log_steps": 100,
+    "first_eval": true,
+    "save_best": true,
+    "fp16": true,
+    "grad_norm": 1.0,
+    "valid_freq": 10,
+    "pretrain_dir": "pretrained_models/pretrain_vast"
+  },
+
+  "model_cfg": {
+    "default": "./configs/default_model_cfg.json",
+    "geometry_mode": "hybrid",
+    "curvature_init": 1.0,
+    "learn_curvature": false,
+    "initial_euclidean_weight": 0.9,
+    "initial_hyperbolic_weight": 0.1,
+    "learn_hybrid_weights": false,
+    "gradient_clip_hyperbolic": 1.0,
+    "max_subtitle_len": 70
+  },
+
+  "data_cfg": {
+    "train": [{
+      "type": "annoindexed",
+      "training": true,
+      "name": "finetune_area",
+      "txt": "datasets/VAST150K/annotations150k_clean.json",
+      "vision": "datasets/VAST150K/video_clips/",
+      "audio": "datasets/VAST150K/audio_clips/",
+      "vision_transforms": "crop_flip",
+      "vision_format": "video_rawvideo",
+      "vision_sample_num": 2,
+      "audio_sample_num": 1,
+      "task": "ret%tvas%tv%ta",
+      "epoch": 0.5,
+      "n_workers": 8,
+      "batch_size": 128
+    }],
+
+    "val": [{
+      "type": "annoindexed",
+      "training": false,
+      "name": "msrvtt_ret",
+      "txt": "datasets/annotations/msrvtt/descs_ret_test.json",
+      "vision": "datasets/msrvtt/TestVideo",
+      "audio": "datasets/msrvtt/test_audios",
+      "vision_transforms": "crop_flip",
+      "vision_format": "video_rawvideo",
+      "vision_sample_num": 8,
+      "audio_sample_num": 1,
+      "task": "ret%tvas",
+      "n_workers": 8,
+      "batch_size": 64
+    }]
+  }
+}
