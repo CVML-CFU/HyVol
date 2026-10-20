@@ -152,4 +152,15 @@ GRAM_HYVOL/ , HyperGRAM_HYVOL/
   data/           dataset / dataloader code
   run.py          training / eval entry point
 ```
+## 9. Citation
 
+If you use this code or the pretrained weights, please cite
+([arXiv:2609.15320](https://arxiv.org/abs/2609.15320)):
+
+```bibtex
+@inproceedings{nag2027hyvol,
+  title     = {Hypergraph-Regularized Gramian Volumes for Multimodal Retrieval},
+  author    = {Nag, Anindya and Mehrish, Ambuj and Vascon, Sebastiano},
+  booktitle = {Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
+  year      = {2027}
+}
