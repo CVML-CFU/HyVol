@@ -98,7 +98,7 @@ The hypergraph is built **only** during training.
 ## 6. Evaluation
 
 Pretrained HyVoL checkpoints are available on Hugging Face:
-[huggingface.co/anindyanag58/HyVol](https://huggingface.co/anindyanag58/HyVol)
+[huggingface.co/CVML-CFU/HyVol](https://huggingface.co/CVML-CFU/HyVol)
 
 | Folder | Checkpoint |
 | --- | --- |
