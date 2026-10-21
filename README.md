@@ -10,6 +10,8 @@ test-time cost.
 
 <p align="center">
   <img src="hyvol_overview.png" width="100%" alt="HyVoL overview">
+  <br>
+  <em><b>Overview of HyVoL.</b> Each clip's streams form a document hyperedge, and mutual top-k captions add semantic hyperedges. A gated hypergraph refinement updates the embeddings during training only; at inference the plain Gramian-volume score is used.</em>
 </p>
 
 We release HyVoL on two volume backbones:
