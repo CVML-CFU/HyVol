@@ -8,6 +8,10 @@ gates a refinement back onto the modality embeddings. **At inference the
 hypergraph is removed** and the plain volume backbone is scored, so HyVoL adds no
 test-time cost.
 
+<p align="center">
+  <img src="hyvol_overview.png" width="100%" alt="HyVoL overview">
+</p>
+
 We release HyVoL on two volume backbones:
 
 | Folder | Backbone | Volume |
